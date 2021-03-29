@@ -1,0 +1,48 @@
+Demo version should behave as a logged in user or teacher via toggle
+
+User can add a course
+User can load a course and "complete" lessons
+
+Teacher can create a course 
+* add course
+* add lessons to course 
+    * lessons can have a title, content, and video link
+Teacher can edit a course/lesson
+Teacher can delete a course/lesson
+
+Lesson keeps track of Users that have completed (??? how to do this cleanly)
+
+Models:
+# = wishlist
+
+User (one for demo)
+:username - string
+:password - string
+has_secure_password
+uniqueness: true
+# username and password for oAuth
+has_many :courses
+
+Teacher (one for demo, admin level)
+:username - string
+:password - string
+has_secure_password
+uniqueness: true
+# username and password for oAuth
+has_many :courses
+
+Course (just one for demo)
+:id - uuid()
+:title - string
+has_many :lessons
+has_many :users 
+belongs_to :teacher
+
+Lesson 
+:completed_users - array with usernames
+:title - string 
+:content - string
+:video_url - string (link)
+
+Stretch Goals:
+OAuth for users and teachers (figure out what params we need for this)
