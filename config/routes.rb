@@ -1,8 +1,25 @@
 Rails.application.routes.draw do
-  resources :subscriptions
-  resources :lessons
-  resources :courses
-  resources :teachers
-  resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  namespace :api do
+    namespace :v1 do
+
+      resources :courses
+
+      resources :teachers do 
+        resources :subscriptions
+        resources :courses do 
+          resources :lessons, :subscriptions 
+        end 
+      end 
+
+      resources :users do 
+        resources :subscriptions
+        resources :courses do 
+          resources :lessons 
+        end
+      end 
+
+    end
+  end 
+
 end

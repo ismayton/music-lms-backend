@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2021_03_29_215604) do
   create_table "subscriptions", force: :cascade do |t|
     t.integer "user_id"
     t.integer "course_id"
-    t.integer "lessons_completed", default: 0
     t.boolean "complete", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
