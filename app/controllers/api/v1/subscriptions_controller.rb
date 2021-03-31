@@ -8,8 +8,8 @@ class Api::V1::SubscriptionsController < ApplicationController
             render json: subscriptions
         elsif params[:teacher_id] 
             teacher = Teacher.find(params[:teacher_id])
-            # find all subscriptions to courses belonging to teacher
-            render json: teacher.subscriptions
+            # find all subscriptions to courses belonging to teacher (active record join table)
+            render json: teacher
         end 
     end 
 
