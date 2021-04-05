@@ -2,12 +2,12 @@ class Api::V1::CoursesController < ApplicationController
     def index 
         if params[:user_id]
             user = User.find(params[:user_id])
-            render json: user.courses
+            render json: user.courses, include: :lessons
         elsif params[:teacher_id]
             teacher = Teacher.find(params[:teacher_id])
-            render json: teacher.courses
+            render json: teacher.courses, include: :lessons
         else
-            render json: Course.all
+            render json: Course.all, include: :lessons
         end 
     end 
 

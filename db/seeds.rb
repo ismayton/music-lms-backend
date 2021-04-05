@@ -32,15 +32,15 @@ def create_users
 end
 
 HORN_COURSE_LESSONS = [
-    { title: "Horn Lesson 1", content: "First lesson for the horn!", video_url: "https://www.youtube.com/watch?v=QojnRc7SS9o" },
-    { title: "Horn Lesson 2", content: "Second lesson for the horn!", video_url: "https://www.youtube.com/watch?v=QojnRc7SS9o" },
-    { title: "Horn Lesson 3", content: "Third lesson for the horn!", video_url: "https://www.youtube.com/watch?v=QojnRc7SS9o" }
+    { title: "Horn Lesson 1", content: "First lesson for the horn!", video_url: "https://www.youtube.com/embed/o_IfWSKZSiQ" },
+    { title: "Horn Lesson 2", content: "Second lesson for the horn!", video_url: "https://www.youtube.com/embed/hM8hAfZ52R8" },
+    { title: "Horn Lesson 3", content: "Third lesson for the horn!", video_url: "https://www.youtube.com/embed/sTkFCEm0IBA" }
 ]
 
 VIOLIN_COURSE_LESSONS = [
-    { title: "Violin Lesson 1", content: "First lesson for the violin!", video_url: "https://www.youtube.com/watch?v=QojnRc7SS9o" },
-    { title: "Violin Lesson 2", content: "Second lesson for the violin!", video_url: "https://www.youtube.com/watch?v=QojnRc7SS9o" },
-    { title: "Violin Lesson 3", content: "Third lesson for the violin!", video_url: "https://www.youtube.com/watch?v=QojnRc7SS9o" }
+    { title: "Violin Lesson 1", content: "First lesson for the violin!", video_url: "https://www.youtube.com/embed/D4OOD2Z0c4U" },
+    { title: "Violin Lesson 2", content: "Second lesson for the violin!", video_url: "https://www.youtube.com/embed/kwSFCqxVy-k" },
+    { title: "Violin Lesson 3", content: "Third lesson for the violin!", video_url: "https://www.youtube.com/embed/Indrt17P4F0" }
 ]
 
 def create_lessons
