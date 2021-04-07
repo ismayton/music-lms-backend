@@ -5,10 +5,12 @@
 @horn_course = Course.create(title: "Horn-a-palooza!")
 @violin_course = Course.create(title: "Violins is the Answer...")
 @sibelius_course = Course.create(title: "Sibelius Tutorials")
+@software_course = Course.create(title: "Software Tutorials: Basics for Musicians")
 
 @horn_teacher.courses << @horn_course
 @violin_teacher.courses << @violin_course
 @horn_hippie.courses << @sibelius_course
+@horn_hippie.courses << @software_course
 
 HORN_STUDENTS = [
     { username: "Horn Student 1", password: "password" },
@@ -27,11 +29,13 @@ def create_users
         user = User.create(student)
         user.courses << @horn_course
         user.courses << @sibelius_course
+        user.courses << @software_course
     end
     VIOLIN_STUDENTS.each do |student|
         user = User.create(student)
         user.courses << @violin_course
         user.courses << @sibelius_course
+        user.courses << @software_course
     end
 end
 
@@ -133,6 +137,33 @@ SIBELIUS_COURSE_LESSONS = [
     }
 ]
 
+SOFTWARE_COURSE_LESSONS = [
+    { 
+        title: "FINAL CUT PRO X | BASICS FOR MUSICIANS | Software Tutorial", 
+        content: "Hey friends! This is a walkthrough tutorial where I ramble, scramble, and gamble my way through all of my favorite tips and tricks in Final Cut Pro X. 
+        \n Below is a list of all the general topics covered. Watch the whole video to make sure you don't miss anything though ;)", 
+        video_url: "https://youtube.com/embed/i4Iw9o-hUEQ" 
+    },
+    { 
+        title: "LOGIC PRO X | BASCIS FOR MUSICIANS | Software Tutorial", 
+        content: "Hey friends! This is another walkthrough tutorial where I ramble, scramble, and gamble my way through all of my favorite starter-pack tips and tricks in Logic Pro X! 
+        \n There are so many things we have yet to cover, but over a half hour we introduce how to record into logic and go through a basic mixing process for a simple project.", 
+        video_url: "https://youtube.com/embed/QwGC7xsjHkE" 
+    },
+    { 
+        title: "SIBELIUS MUSIC NOTATION SOFTWARE | BASICS FOR MUSICIANS | Sibelius Tutorial", 
+        content: "Hey friends! Welcome to the first installment of #TutorialTuesday​! This is my first long-form tutorial and I loved putting it together for y'all. We cover a ton of Sibelius basics while having a liiiiiiiiiitlle bit of fun 😜. Keep in mind that the mouse clicks didn't register correctly because I was using a faulty screencapture software... Living and Learning 
+        \n These tips work for any version of Sibelius 7 or higher.", 
+        video_url: "https://youtube.com/embed/2eGn-onCA6w" 
+    },
+    { 
+        title: "4 ZOOM TIPS FOR MUSIC TEACHERS | BASICS FOR MUSICIANS | Remotely Teach Music With Zoom", 
+        content: "Hey friends! These are my top 4 tips for teaching music on zoom. 
+        \n (Number 4 is V IMPORTANT)", 
+        video_url: "https://youtube.com/embed/wnwLOg3zKs4" 
+    }
+]
+
 def create_lessons
     HORN_COURSE_LESSONS.each do |lesson|
         lesson = Lesson.create(lesson)
@@ -145,6 +176,10 @@ def create_lessons
     SIBELIUS_COURSE_LESSONS.each do |lesson|
         lesson = Lesson.create(lesson)
         @sibelius_course.lessons << lesson
+    end
+    SOFTWARE_COURSE_LESSONS.each do |lesson|
+        lesson = Lesson.create(lesson)
+        @software_course.lessons << lesson
     end
 end
 
