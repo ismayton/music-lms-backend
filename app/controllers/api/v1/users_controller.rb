@@ -9,21 +9,37 @@ class Api::V1::UsersController < ApplicationController
         render json: user
     end
 
-    def create
-        if User.find_by(username: params[:username])
-            render json: {error: "Username already taken."}
+    def show
+    @user = User.find(params[:id])
+        if @user
+            render json: { user: @user }
         else
-            if params[:username]
-                user = User.new(username: params[:username])
-                user.password = params[:password]
-                if user.save
-                    render json: user 
-                end
-            else
-                remder json: {error: "User could not be created."}
-            end
+            render json: {
+            status: 500,
+            errors: ['user not found']
+            }
         end
     end
 
+    def create
+        @user = User.new(user_params)
+        if @user.save
+            login!  
+            render json: {
+                status: :created,
+                user: @user
+            }
+        else 
+            render json: {
+                status: 500,
+                errors: @user.errors.full_messages
+            }
+        end
+    end
+private
+
+    def user_params
+        params.require(:user).permit(:username, :password)
+    end
     # delete index? add show
 end
