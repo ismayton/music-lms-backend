@@ -1,15 +1,10 @@
 class Api::V1::SessionsController < ApplicationController
     def create
-        puts 'MADE IT TO THE CREATE ROUTE !!!!!!'
-        puts params
         @user = User.find_by(username: session_params[:username])
 
         if @user && @user.authenticate(session_params[:password])
           login!
-          render json: {
-            logged_in: true,
-            user: @user
-          }
+          render json: @user
         else
           render json: { 
             status: 401,
