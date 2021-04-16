@@ -4,6 +4,4 @@ class TeacherSerializer < ActiveModel::Serializer
   has_many :courses
   has_many :subscriptions, through: :courses
   has_many :users, through: :subscriptions
-  
-  # figure out how to limit to unique users
 end

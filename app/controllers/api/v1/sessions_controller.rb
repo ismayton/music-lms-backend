@@ -1,7 +1,9 @@
 class Api::V1::SessionsController < ApplicationController
     def create
+        puts 'MADE IT TO THE CREATE ROUTE !!!!!!'
+        puts params
         @user = User.find_by(username: session_params[:username])
-      
+
         if @user && @user.authenticate(session_params[:password])
           login!
           render json: {
@@ -17,7 +19,7 @@ class Api::V1::SessionsController < ApplicationController
     end
 
     def is_logged_in?
-        puts "WOOP LOOKIE HERERRRRRR"
+        puts params
         if logged_in? && current_user
             render json: {
                 logged_in: true,
@@ -41,6 +43,6 @@ class Api::V1::SessionsController < ApplicationController
 
 private
     def session_params
-          params.require(:user).permit(:username, :password)
+        params.require(:user).permit(:username, :password)
     end
 end

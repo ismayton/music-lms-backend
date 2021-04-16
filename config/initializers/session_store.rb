@@ -1,4 +1,5 @@
 if Rails.env === 'production' 
     Rails.application.config.session_store :cookie_store, key: '_music-LMS', domain: 'music-LMS-json-api'
-  else
+else
     Rails.application.config.session_store :cookie_store, key: '_music-LMS'
+end
