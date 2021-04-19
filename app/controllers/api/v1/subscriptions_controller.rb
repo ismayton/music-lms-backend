@@ -29,10 +29,11 @@ class Api::V1::SubscriptionsController < ApplicationController
     def destroy
         @sub = Subscription.find(params[:id])
         @user = User.find(params[:user_id])
-        if @sub.destroy
+        if @sub.destroy 
+            @user.save
             render json: @user
         else
-            render json: @user
+            render json: {error: "Subscription could not be deleted."}
         end
     end
 
