@@ -5,7 +5,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def show
-    @user = User.find(params[:id])
+        @user = User.find(params[:id])
         if @user
             render json: { user: @user }
         else
@@ -33,7 +33,7 @@ class Api::V1::UsersController < ApplicationController
             }
         end
     end
-
+    
 private
     def user_params
         params.require(:user).permit(:username, :password, :password_confirmation)

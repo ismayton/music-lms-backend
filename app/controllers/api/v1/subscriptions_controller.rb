@@ -1,4 +1,5 @@
 class Api::V1::SubscriptionsController < ApplicationController
+    require 'pry'
     def index 
         if params[:user_id]
             subscriptions = Subscription.where(user_id: params[:user_id])
@@ -14,5 +15,30 @@ class Api::V1::SubscriptionsController < ApplicationController
             render json: Subscription.all
         end 
     end 
-    #add show with user and course(?)
+
+    def create 
+        @subscription = Subscription.new(subscription_params)
+        if @subscription.save
+            @user = User.find(params[:user_id])
+            render json: @user
+        else
+            render json: {error: "Subscription could not be created."}
+        end
+    end 
+
+    def destroy
+        @sub = Subscription.find(params[:id])
+        @user = User.find(params[:user_id])
+        if @sub.destroy
+            render json: @user
+        else
+            render json: @user
+        end
+    end
+
+    private
+
+    def subscription_params 
+        params.require(:subscription).permit(:user_id, :course_id)
+    end
 end
