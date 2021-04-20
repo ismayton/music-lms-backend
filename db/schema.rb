@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_29_215604) do
+ActiveRecord::Schema.define(version: 2021_04_20_154136) do
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 2021_03_29_215604) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["teacher_id"], name: "index_courses_on_teacher_id"
+  end
+
+  create_table "lesson_statuses", force: :cascade do |t|
+    t.integer "lesson_id", null: false
+    t.integer "subscription_id", null: false
+    t.boolean "status", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_lesson_statuses_on_lesson_id"
+    t.index ["subscription_id"], name: "index_lesson_statuses_on_subscription_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -33,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_03_29_215604) do
   create_table "subscriptions", force: :cascade do |t|
     t.integer "user_id"
     t.integer "course_id"
-    t.boolean "complete", default: false
+    t.boolean "status", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_subscriptions_on_course_id"
@@ -54,4 +64,6 @@ ActiveRecord::Schema.define(version: 2021_03_29_215604) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "lesson_statuses", "lessons"
+  add_foreign_key "lesson_statuses", "subscriptions"
 end

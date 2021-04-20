@@ -17,7 +17,7 @@ class Api::V1::SubscriptionsController < ApplicationController
     end 
 
     def create 
-        @subscription = Subscription.new(subscription_params)
+        @subscription = Subscription.new(subscription_params)        
         if @subscription.save
             @user = User.find(params[:user_id])
             render json: @user

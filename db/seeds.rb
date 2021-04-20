@@ -30,14 +30,14 @@ def create_users
     HORN_STUDENTS.each do |student|
         user = User.create(student)
         # user.courses << @horn_course
-        # user.courses << @sibelius_course
+        user.courses << @sibelius_course
         # user.courses << @software_course
     end
     VIOLIN_STUDENTS.each do |student|
         user = User.create(student)
         # user.courses << @violin_course
         # user.courses << @sibelius_course
-        # user.courses << @software_course
+        user.courses << @software_course
     end
 end
 
