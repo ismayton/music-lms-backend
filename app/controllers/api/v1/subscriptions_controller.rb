@@ -26,6 +26,18 @@ class Api::V1::SubscriptionsController < ApplicationController
         end
     end 
 
+    # def update 
+    #     @subscription = Subscription.find(params[:subscription_id])
+    #     @subscription.lesson_statuses[params[:lesson_id]] = "complete"
+    #     binding.pry
+    #     if @subscription.save
+    #         @user = @subscription.user
+    #         render json: @user 
+    #     else
+    #         render json: {error: "Subscription could not be updated."}
+    #     end  
+    # end
+    
     def destroy
         @sub = Subscription.find(params[:id])
         @user = User.find(params[:user_id])
@@ -40,6 +52,6 @@ class Api::V1::SubscriptionsController < ApplicationController
     private
 
     def subscription_params 
-        params.require(:subscription).permit(:user_id, :course_id)
+        params.require(:subscription).permit(:id, :user_id, :course_id, :lesson_id)
     end
 end

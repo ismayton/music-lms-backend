@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lesson_statuses
   namespace :api do
     namespace :v1 do
 

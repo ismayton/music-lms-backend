@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_154136) do
+ActiveRecord::Schema.define(version: 2021_04_22_200720) do
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
@@ -21,12 +21,11 @@ ActiveRecord::Schema.define(version: 2021_04_20_154136) do
   end
 
   create_table "lesson_statuses", force: :cascade do |t|
-    t.integer "lesson_id", null: false
-    t.integer "subscription_id", null: false
-    t.boolean "status", default: false
+    t.integer "subscription_id"
+    t.integer "lesson_id"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["lesson_id"], name: "index_lesson_statuses_on_lesson_id"
     t.index ["subscription_id"], name: "index_lesson_statuses_on_subscription_id"
   end
 
@@ -64,6 +63,4 @@ ActiveRecord::Schema.define(version: 2021_04_20_154136) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "lesson_statuses", "lessons"
-  add_foreign_key "lesson_statuses", "subscriptions"
 end

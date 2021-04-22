@@ -30,14 +30,14 @@ def create_users
     HORN_STUDENTS.each do |student|
         user = User.create(student)
         # user.courses << @horn_course
-        user.courses << @sibelius_course
+        # user.courses << @sibelius_course
         # user.courses << @software_course
     end
     VIOLIN_STUDENTS.each do |student|
         user = User.create(student)
         # user.courses << @violin_course
         # user.courses << @sibelius_course
-        user.courses << @software_course
+        # user.courses << @software_course
     end
 end
 
@@ -185,5 +185,13 @@ def create_lessons
     end
 end
 
+def subscribe_users 
+    User.all.each do |user| 
+        user.courses << @sibelius_course
+    end
+end
+
+
 create_users
 create_lessons
+subscribe_users
