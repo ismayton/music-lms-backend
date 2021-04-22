@@ -26,17 +26,17 @@ class Api::V1::SubscriptionsController < ApplicationController
         end
     end 
 
-    # def update 
-    #     @subscription = Subscription.find(params[:subscription_id])
-    #     @subscription.lesson_statuses[params[:lesson_id]] = "complete"
-    #     binding.pry
-    #     if @subscription.save
-    #         @user = @subscription.user
-    #         render json: @user 
-    #     else
-    #         render json: {error: "Subscription could not be updated."}
-    #     end  
-    # end
+    def update 
+        @subscription = Subscription.find(params[:subscription_id])
+        lesson_status = @subscription.lesson_statuses.find_by(lesson_id: params[:lesson_id])
+        lesson_status.status = "complete"
+        if lesson_status.save
+            @user = @subscription.user
+            render json: @user 
+        else
+            render json: {error: "Subscription could not be updated."}
+        end  
+    end
     
     def destroy
         @sub = Subscription.find(params[:id])
