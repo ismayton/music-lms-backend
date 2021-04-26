@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_24_165356) do
+ActiveRecord::Schema.define(version: 2021_04_22_200720) do
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
@@ -31,19 +31,17 @@ ActiveRecord::Schema.define(version: 2021_04_24_165356) do
 
   create_table "lessons", force: :cascade do |t|
     t.string "title"
-    t.string "content"
-    t.string "video_url"
+    t.string "markdown_url"
     t.integer "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "markdown_url"
     t.index ["course_id"], name: "index_lessons_on_course_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer "user_id"
     t.integer "course_id"
-    t.boolean "status", default: false
+    t.boolean "complete", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_subscriptions_on_course_id"

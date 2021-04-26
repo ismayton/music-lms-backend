@@ -5,7 +5,6 @@ class CreateLessonStatuses < ActiveRecord::Migration[6.0]
       t.integer :lesson_id
       t.string :status
        
-
       t.timestamps
     end
   end

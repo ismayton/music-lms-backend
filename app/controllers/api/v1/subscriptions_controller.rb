@@ -1,19 +1,7 @@
 class Api::V1::SubscriptionsController < ApplicationController
     require 'pry'
     def index 
-        if params[:user_id]
-            subscriptions = Subscription.where(user_id: params[:user_id])
-            render json: subscriptions
-        elsif params[:course_id]
-            subscriptions = Subscription.where(course_id: params[:course_id])
-            render json: subscriptions
-        elsif params[:teacher_id] 
-            teacher = Teacher.find(params[:teacher_id])
-            subscriptions = Subscription.joins(:course).where(courses: { teacher_id: teacher.id  })
-            render json: subscriptions
-        else
-            render json: Subscription.all
-        end 
+        render json: Subscription.all
     end 
 
     def create 
@@ -30,7 +18,12 @@ class Api::V1::SubscriptionsController < ApplicationController
         @subscription = Subscription.find(params[:subscription_id])
         lesson_status = @subscription.lesson_statuses.find_by(lesson_id: params[:lesson_id])
         lesson_status.status = "complete"
+    
         if lesson_status.save
+            if @subscription.lesson_statuses.all? {|lesson_status| lesson_status.status === "complete"}
+                @subscription.complete = true
+                @subscription.save
+            end
             @user = @subscription.user
             render json: @user 
         else

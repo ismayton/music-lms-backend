@@ -15,17 +15,6 @@ class Api::V1::CoursesController < ApplicationController
         render json: Course.find(params[:id])
     end
 
-    def create 
-        course = Course.new(course_params)
-        if course.save
-            render json: course 
-        else
-            render json: {error: "Error creating course"} 
-        end
-    end
-
-    #CRUD
-
     def course_params 
         params.require(:course).permit(:title)
     end 
