@@ -2,10 +2,10 @@
 
 This is a Rails API serving as a backend for the Music LMS React.js frontend.
 
-Run `bundle install` to install dependancies. After that, [initialize the database](Database-initialization) and start up the server with `rails s` (the backend server is set to run on http://localhost:3001 to not overlap the local frontend server).
+Run `bundle install` to install dependancies. After that, [initialize the database](Database-initialization) and start up the server with `rails s` (the backend server is set to run on [http://localhost:3001](http://localhost:3001) to not overlap the local frontend server).
 ## Music LMS Frontend Deployment
 
-This repository serves as the backend API for the Music LMS Frontend, which lives in a separate repository. To run the complete app, fork music-lms-frontend from https://github.com/ismayton/music-lms-frontend. 
+This repository serves as the backend API for the Music LMS Frontend, which lives in a separate repository. To run the complete app, fork and clone [music-lms-frontend](https://github.com/ismayton/music-lms-frontend). 
 
 Start up the backend server with `rails s`. When the backend server is running, open the frontend repository and run `npm start` to start the frontend server.
 
