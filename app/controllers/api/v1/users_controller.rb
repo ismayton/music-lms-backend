@@ -18,14 +18,9 @@ class Api::V1::UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        # @user.password  = user_params[:password]
-        # @user.password_confirmation = user_params[:password]
         if @user.save
             login!  
-            render json: {
-                status: :created,
-                user: @user
-            }
+            render json: @user
         else 
             render json: {
                 status: 500,
