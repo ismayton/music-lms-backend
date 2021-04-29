@@ -7,7 +7,7 @@ Run `bundle install` to install dependancies. After that, [initialize the databa
 
 This repository serves as the backend API for the Music LMS Frontend, which lives in a separate repository. To run the complete app, fork music-lms-frontend from https://github.com/ismayton/music-lms-frontend. 
 
-Start up the backend server with `rails s`. When the server is running, open the frontend repository and run `npm start` to start the frontend server.
+Start up the backend server with `rails s`. When the backend server is running, open the frontend repository and run `npm start` to start the frontend server.
 
 ### Ruby version
 Ruby version 2.6.1
