@@ -1,2 +1,2 @@
-class LessonStatusesController < ApplicationController
+class Api::V1::LessonStatusesController < ApplicationController
 end
